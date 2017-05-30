@@ -15,12 +15,7 @@
         "allowUnreachableCode": true,
         "lib": ["es2017"],
         "typeRoots": ["node_modules/@types"],
-        "types": [
-            "lodash",
-            "mocha",
-            "node",
-            "should"
-        ],
+        "types": ["mocha", "node", "should"],
         "outDir": "./build",
         "rootDir": "./src"
     },
