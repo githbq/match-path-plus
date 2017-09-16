@@ -1,6 +1,6 @@
 {
     "name": "match-path-plus",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "match-path",
     "main": "build/index.js",
     "scripts": {
@@ -28,14 +28,9 @@
         "tslint": "^5.1.0",
         "typescript": "^2.3.2"
     },
-    "keywords": [
-        "typescript",
-        "match-path"
-    ],
+    "keywords": ["typescript", "match-path"],
     "author": "hubiqing",
     "repository": "https://github.com/githbq/match-path-plus.git",
-    "engines": {
-        "node": ">=7.6"
-    },
+    "engines": {"node": ">=7.6"},
     "license": "MIT"
 }

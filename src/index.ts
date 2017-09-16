@@ -1,23 +1,23 @@
 /**
  * entry
  */
-import pathToRegExp from 'path-to-regexp'
+import * as  pathToRegExp from 'path-to-regexp'
 
 const cache = new Map()
 
 /**
  * Converts path to a regex, if a match is found then we extract params from it
- * @param routePattern
- * @param url
- * @returns {any}
+ * @param routePattern 
+ * @param url 
+ * @param regOptions path-to-regexp options
  */
-export function matchPath(routePattern, url) {
+export function matchPath(routePattern, url, regOptions) {
     const [pathToMatch = '/', search = ''] = url.split('?')
     let regexp = cache.get(routePattern)
 
     if (!regexp) {
         const keys = []
-        regexp = { pattern: pathToRegExp(routePattern, keys), keys }
+        regexp = { pattern: pathToRegExp(routePattern, keys, regOptions), keys }
         cache.set(routePattern, regexp)
     }
 
