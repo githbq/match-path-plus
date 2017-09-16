@@ -17,6 +17,13 @@ export function matchPath(routePattern, url, regOptions) {
 
     if (!regexp) {
         const keys = []
+        // path-to-regexp options
+        regOptions = {
+            ...regOptions,
+            sensitive: false,
+            strict: false,
+            end: false
+        }
         regexp = { pattern: pathToRegExp(routePattern, keys, regOptions), keys }
         cache.set(routePattern, regexp)
     }

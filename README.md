@@ -20,14 +20,32 @@ const { matchPath , mapSearchParams } = require('match-path-plus')
 ## Usage
 ```javascript
 //typescript
+/**
+ * entry
+ */
 import * as  pathToRegExp from 'path-to-regexp'
+
 const cache = new Map()
+
+/**
+ * Converts path to a regex, if a match is found then we extract params from it
+ * @param routePattern 
+ * @param url 
+ * @param regOptions path-to-regexp options
+ */
 export function matchPath(routePattern, url, regOptions) {
     const [pathToMatch = '/', search = ''] = url.split('?')
     let regexp = cache.get(routePattern)
 
     if (!regexp) {
         const keys = []
+        // path-to-regexp options
+        regOptions = {
+            ...regOptions,
+            sensitive: false,
+            strict: false,
+            end: false
+        }
         regexp = { pattern: pathToRegExp(routePattern, keys, regOptions), keys }
         cache.set(routePattern, regexp)
     }
@@ -53,7 +71,13 @@ export function matchPath(routePattern, url, regOptions) {
         params
     }
 }
- 
+
+/**
+ * Maps a querystring to an object
+ * Supports arrays and utf-8 characters
+ * @param search
+ * @returns {any}
+ */
 export function mapSearchParams(search) {
     let params = {}
     let params_re = /([^?&=]+)=?([^&]*)/g
@@ -68,4 +92,5 @@ export function mapSearchParams(search) {
 
     return params
 }
+
 ```

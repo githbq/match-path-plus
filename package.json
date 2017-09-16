@@ -1,6 +1,6 @@
 {
     "name": "match-path-plus",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "match-path",
     "main": "build/index.js",
     "scripts": {
